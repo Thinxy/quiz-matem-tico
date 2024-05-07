@@ -1,15 +1,51 @@
 var questions = [
   {
-    name: "question 1",
-    value: "Quanto é 1+1?",
-    options: ["2", "3", "4", "5"],
-    correctAnswer: "2",
-  },
-  {
-    name: "question 2",
+    name: "question-1",
     value: "Quanto é 2+2?",
     options: ["3", "4", "5", "6"],
     correctAnswer: "4",
+  },
+  {
+    name: "question-2",
+    value: "Quanto é 5*3?",
+    options: ["10", "15", "20", "25"],
+    correctAnswer: "15",
+  },
+  {
+    name: "question-3",
+    value: "Quanto é 10/2?",
+    options: ["2", "3", "4", "5"],
+    correctAnswer: "5",
+  },
+  {
+    name: "question-4",
+    value: "Quanto é 8-3?",
+    options: ["3", "4", "5", "6"],
+    correctAnswer: "5",
+  },
+  {
+    name: "question-5",
+    value: "Quanto é 7*7?",
+    options: ["42", "49", "56", "63"],
+    correctAnswer: "49",
+  },
+  {
+    name: "question-6",
+    value: "Quanto é 12/4?",
+    options: ["2", "3", "4", "6"],
+    correctAnswer: "3",
+  },
+  {
+    name: "question-7",
+    value: "Quanto é 9*9?",
+    options: ["72", "81", "90", "99"],
+    correctAnswer: "81",
+  },
+  {
+    name: "question-8",
+    value: "Quanto é 15/3?",
+    options: ["3", "4", "5", "6"],
+    correctAnswer: "5",
   },
 ];
 
