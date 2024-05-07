@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 5px;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: 2px solid #222;
+}
+
+.perguntas {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.button-perguntas {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.button-perguntas button {
+  text-align: center;
+  margin-left: 10px;
+  background-color: #ccdddf;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 1.5px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-perguntas button:hover {
+  background-color: #bbd1d4;
+  transform: scale(1.1);
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-e {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-end {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.mensagem-acerto {
+  text-align: center;
+  background-color: green;
+  padding: 20px;
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.mensagem-acerto h2 {
+  padding-top: 33px;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden-e {
+  display: none;
+}
+
+.hidden-end {
+  display: none;
+}
+
+.mensagem-erro {
+  text-align: center;
+  background-color: red;
+  padding: 20px;
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.mensagem-erro h2 {
+  padding-top: 33px;
+}
+
+.mensagem-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: green;
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.button-restart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}

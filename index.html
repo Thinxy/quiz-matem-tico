@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <title>Joguinho</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Quiz Matemático</h1>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="perguntas">
+          <h2>Quantos 1+1?</h2>
+        </div>
+        <div class="button-perguntas">
+          <button class="button-question" onclick="clickedButton()">2</button>
+          <button class="button-question" onclick="clickedButton()">3</button>
+          <button class="button-question" onclick="clickedButton()">4</button>
+          <button class="button-question" onclick="clickedButton()">5</button>
+        </div>
+      </div>
+      <div id="popup" class="popup hidden">
+        <div id="mensagem-acerto" class="mensagem-acerto">
+          <h2>Você acertou!</h2>
+        </div>
+      </div>
+      <div id="popup-e" class="popup-e hidden-e">
+        <div id="mensagem-erro" class="mensagem-erro">
+          <h2>Você errou!</h2>
+        </div>
+      </div>
+      <div id="popup-end" class="popup-end hidden-end">
+        <div id="mensagem-end" class="mensagem-end">
+          <h2>Parabéns, você completou o Quiz Matemático!</h2>
+          <p id="correctAnswersMessage"></p>
+          <button
+            id="restartButton"
+            class="button-restart"
+            onclick="restartQuiz()"
+          >
+            Reiniciar Quiz
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script src="./scripts/script.js"></script>
+</html>
