@@ -12,19 +12,31 @@
 
   <body>
     <header>
-      <h1>Quiz Matemático</h1>
+      <h1><span class="gradient">Quiz Matemático</span></h1>
     </header>
 
-    <main>
+    <div id="start" class="startGame">
+        <button class="difficulty easy" onclick="chooseDifficulty('easy')">
+          Fácil
+        </button>
+        <button class="difficulty normal" onclick="chooseDifficulty('normal')">
+          Médiano
+        </button>
+        <button class="difficulty hard" onclick="chooseDifficulty('hard')">
+          Difícil
+        </button>
+    </div>
+
+    <main id="main-class" class="hidden-question">
       <div class="container">
         <div class="perguntas">
-          <h2>Quantos 1+1?</h2>
+          <h2>Teste</h2>
         </div>
         <div class="button-perguntas">
+          <button class="button-question" onclick="clickedButton()">1</button>
           <button class="button-question" onclick="clickedButton()">2</button>
           <button class="button-question" onclick="clickedButton()">3</button>
           <button class="button-question" onclick="clickedButton()">4</button>
-          <button class="button-question" onclick="clickedButton()">5</button>
         </div>
       </div>
       <div id="popup" class="popup hidden">
@@ -51,6 +63,8 @@
         </div>
       </div>
     </main>
+
+    <footer><span class="bold">2° DS</span> &copy; 2024</footer>
   </body>
 
   <script src="./scripts/script.js"></script>
