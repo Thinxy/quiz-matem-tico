@@ -168,6 +168,8 @@ function shuffleArray(array) {
 
 var usedQuestionIndices = []; // Array para armazenar os índices das perguntas já utilizadas
 
+var currentQuestion; // Variável global para armazenar a pergunta atual
+
 function showQuestion(difficulty) {
   if (!difficulty) return;
 
@@ -180,22 +182,40 @@ function showQuestion(difficulty) {
     usedQuestionIndices = [];
   }
 
-  var currentQuestionIndex;
-  do {
-    currentQuestionIndex = Math.floor(Math.random() * questions.length);
-  } while (usedQuestionIndices.includes(currentQuestionIndex)); // Verifique se o índice já foi usado
+  var availableQuestions = questions.filter(
+    (_, index) => !usedQuestionIndices.includes(index)
+  );
 
-  usedQuestionIndices.push(currentQuestionIndex); // Adicione o índice ao array de índices utilizados
+  // Verifique se todas as perguntas já foram utilizadas
+  if (availableQuestions.length === 0) {
+    // Se sim, reinicie os índices utilizados
+    usedQuestionIndices = [];
+    availableQuestions = questions.slice(); // Copie todas as perguntas novamente
+  }
 
-  var currentQuestion = questions[currentQuestionIndex];
+  var currentQuestionIndex = Math.floor(
+    Math.random() * availableQuestions.length
+  );
+  currentQuestion = availableQuestions[currentQuestionIndex]; // Armazene a pergunta atual globalmente
+
   var perguntaElement = document.querySelector(".perguntas h2");
   perguntaElement.textContent = currentQuestion.value;
 
+  // Embaralhe as opções de resposta
+  var shuffledOptions = shuffleArray(currentQuestion.options);
+
+  console.log("Opções de resposta embaralhadas:", shuffledOptions);
+  console.log("Resposta correta:", currentQuestion.correctAnswer);
+
   var buttons = document.querySelectorAll(".button-question");
   buttons.forEach(function (button, index) {
-    button.textContent = currentQuestion.options[index];
+    button.textContent = shuffledOptions[index];
     button.style.backgroundColor = "";
   });
+
+  // Remova o índice da pergunta utilizada
+  var indexOfUsedQuestion = questions.indexOf(currentQuestion);
+  usedQuestionIndices.push(indexOfUsedQuestion);
 }
 
 function triggerConfetti() {
@@ -228,7 +248,7 @@ function displayPopupEnd() {
   var popup = document.getElementById("popup-end");
 
   triggerConfetti();
-  
+
   setTimeout(() => {
     popup.classList.remove("hidden-end");
     triggerConfetti();
@@ -268,21 +288,31 @@ function chooseDifficulty(difficulty) {
 function clickedButton() {
   var botaoClicado = event.target;
 
-  var respostaCorreta = questions[currentQuestionIndex].correctAnswer;
-  var respostaSelecionada = botaoClicado.textContent;
+  var respostaCorreta = currentQuestion.correctAnswer; // Obter a resposta correta da pergunta atual
+  var respostaSelecionada = botaoClicado.textContent.trim(); // Remover espaços em branco
 
-  if (respostaSelecionada === respostaCorreta) {
-    botaoClicado.style.backgroundColor = "green";
-    displayPopup();
-    correctAnswerCount++;
+  console.log("Resposta selecionada:", respostaSelecionada);
+  console.log("Resposta correta:", respostaCorreta);
+
+  // Obter as opções de resposta originais antes do embaralhamento
+  var opcoesOriginais = currentQuestion.options;
+
+  // Verificar se a resposta selecionada corresponde a alguma das opções originais
+  if (opcoesOriginais.includes(respostaSelecionada)) {
+    if (respostaSelecionada === respostaCorreta) {
+      botaoClicado.style.backgroundColor = "green";
+      displayPopup();
+      correctAnswerCount++;
+    } else {
+      botaoClicado.style.backgroundColor = "red";
+      displayPopupError();
+    }
   } else {
-    botaoClicado.style.backgroundColor = "red";
-    displayPopupError();
+    console.log("Resposta selecionada inválida.");
   }
 
   if (currentQuestionIndex < questions.length - 1) {
     currentQuestionIndex++;
-
     showQuestion(selectButton);
   } else {
     displayPopupEnd();
@@ -290,7 +320,6 @@ function clickedButton() {
     restartButton.style.display = "block";
 
     var message = document.getElementById("correctAnswersMessage");
-
     message.textContent = `Você acertou ${correctAnswerCount}/${questions.length}!`;
   }
 }
