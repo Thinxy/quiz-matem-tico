@@ -8,15 +8,16 @@
 }
 
 body {
-  background-image: whitesmoke;
+  background-color: #222435;
   padding: 10px;
   margin: 5px;
 }
 
 h1 {
+  color: #363b65;
   text-align: center;
   border-bottom: 2px solid #222;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .perguntas {
@@ -24,6 +25,11 @@ h1 {
   text-align: center;
   justify-content: center;
   padding: 10px;
+}
+
+.perguntas h2 {
+  color: #8995f9;
+  margin-top: 15px;
 }
 
 .button-perguntas {
@@ -34,8 +40,11 @@ h1 {
 
 .button-perguntas button {
   text-align: center;
+  color: whitesmoke;
+  font-weight: 600;
   margin-left: 10px;
-  background-color: #ccdddf;
+  margin-bottom: 10px;
+  background-color: #4b5395;
   padding: 15px;
   padding-left: 30px;
   padding-right: 30px;
@@ -46,7 +55,7 @@ h1 {
 }
 
 .button-perguntas button:hover {
-  background-color: #bbd1d4;
+  background-color: #3d4270;
   transform: scale(1.1);
 }
 
@@ -152,7 +161,18 @@ h1 {
 }
 
 footer {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  margin-top: 40px;
+  border-top: 2px solid #222;
+}
+
+footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .bold {
@@ -200,7 +220,8 @@ footer {
 
 .normal {
   background-color: #ffff00;
-  font-weight: 500;
+  font-weight: 600;
+  color: rgb(26, 24, 24);
 }
 
 .normal:hover {
@@ -215,4 +236,27 @@ footer {
 
 .hard:hover {
   background-color: #df0026;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 60%;
+  height: auto;
+}
+
+#my-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Isso permite que os cliques passem através do canvas */
+  z-index: 999;
+}
+
+@media screen and (width <= 800px) {
+  img {
+    max-width: 100%;
+  }
 }

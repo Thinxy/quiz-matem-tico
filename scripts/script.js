@@ -158,11 +158,34 @@ var currentQuestionIndex = 0;
 var correctAnswerCount = 0;
 var selectButton;
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+var usedQuestionIndices = []; // Array para armazenar os índices das perguntas já utilizadas
+
 function showQuestion(difficulty) {
   if (!difficulty) return;
+
   questions = questions_array.find((item) => item.hasOwnProperty(difficulty))[
     difficulty
   ];
+
+  // Se todas as perguntas já foram usadas, reinicie a matriz de índices utilizados
+  if (usedQuestionIndices.length === questions.length) {
+    usedQuestionIndices = [];
+  }
+
+  var currentQuestionIndex;
+  do {
+    currentQuestionIndex = Math.floor(Math.random() * questions.length);
+  } while (usedQuestionIndices.includes(currentQuestionIndex)); // Verifique se o índice já foi usado
+
+  usedQuestionIndices.push(currentQuestionIndex); // Adicione o índice ao array de índices utilizados
 
   var currentQuestion = questions[currentQuestionIndex];
   var perguntaElement = document.querySelector(".perguntas h2");
@@ -175,9 +198,17 @@ function showQuestion(difficulty) {
   });
 }
 
+function triggerConfetti() {
+  var confettiSettings = { target: "my-canvas" };
+  var confetti = new ConfettiGenerator(confettiSettings);
+  confetti.render();
+}
+
 function displayPopup() {
   var popup = document.getElementById("popup");
   popup.classList.remove("hidden");
+
+  triggerConfetti();
 
   setTimeout(function () {
     popup.classList.add("hidden");
@@ -196,8 +227,11 @@ function displayPopupError() {
 function displayPopupEnd() {
   var popup = document.getElementById("popup-end");
 
+  triggerConfetti();
+  
   setTimeout(() => {
     popup.classList.remove("hidden-end");
+    triggerConfetti();
   }, 850);
 }
 
